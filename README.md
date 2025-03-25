@@ -33,22 +33,39 @@ This is a quick guides focus on a command-line experience to easily and quickly 
 
 - Finally, If you are using Azure network security group (NSG) to filter network traffic between Azure resources in an Azure virtual network then set an `inbound rule` to allow service tags `azurebackup` and `azurecloud`.
 
+<br/>
 
 #### CREATE A BACKUP VAULT
 
-To create the Backup vault, run the following command:
+- To create the Backup vault, run the following command:
 
 ```sh
 az dataprotection backup-vault create --resource-group $backupvaultresourcegroup --vault-name $backupvault --location $region --type SystemAssigned --storage-settings datastore-type="VaultStore" type="GeoRedundant“
 ```
+<br/>
+
+#### CREATE BACKUP POLICY
+
+- Once the vault creation is complete, create a backup policy to protect AKS clusters
+
+```sh
+az dataprotection backup-policy get-default-policy-template --datasource-type AzureKubernetesService > akspolicy.json
+```
+<br/>
+
+#### CREATE STORAGE ACCOUNT
+
+- Extension is mandatory to be installed in the AKS cluster to perform any backup and restore operations. The Extension requires the storage account as inputs for installation.
+
+```sh
+az storage account create --name $storageaccount --resource-group $storageaccountresourcegroup --location $region --sku Standard_LRS
+```
 
 
 
-<boye>
 
 
-
-
+<img width="573" alt="image" src="https://github.com/user-attachments/assets/af4f29eb-bf53-4d7c-94d2-5d01d704ae5b" />
 
 
 ⚠️ If you want to create
