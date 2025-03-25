@@ -8,7 +8,7 @@
 
 # AKS BACK-UP IN AZURE
 
-This is a quick guides focus on a command-line experience to easily and quickly run all the required steps. for backing up your AKS cluster in Azure.
+This is a quick guides focus on a command-line/portal experience to easily and quickly run all the required steps. for backing up your AKS cluster in Azure.
 
 
 ## PREREQUISITES
@@ -62,6 +62,11 @@ az storage account create --name $storageaccount --resource-group $storageaccoun
 ```
 
 
+#### CREATE BLOB CONTAINER
+
+```sh
+az storage container create --name $blobcontainer --account-name $storageaccount --auth-mode login
+```
 
 
 
