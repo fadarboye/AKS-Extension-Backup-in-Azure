@@ -99,29 +99,20 @@ az role assignment create --assignee-object-id $(az k8s-extension show --name az
 
 # LINKS 
 
-- Portal:  ([Quickstart: Configure an Azure Kubernetes Services cluster backup - Azure Backup | Microsoft Learn](https://learn.microsoft.com/en-us/azure/backup/quick-backup-aks))
+- Portal:  [Quickstart: Configure an Azure Kubernetes Services cluster backup - Azure Backup | Microsoft Learn](https://learn.microsoft.com/en-us/azure/backup/quick-backup-aks)
+
+
+- CLI:   [Quickstart: Configure vaulted backup for an Azure Kubernetes Service AKS cluster using Azure CLI](https://learn.microsoft.com/en-us/azure/backup/quick-kubernetes-backup-cli)
+
+
+- Prerequires:   [Azure Kubernetes Service (AKS) backup using Azure Backup prerequisite](https://learn.microsoft.com/en-us/azure/backup/azure-kubernetes-service-cluster-backup-concept)
+
+
+- What is AKS backup:   [What is Azure Kubernetes Service backup](https://learn.microsoft.com/en-us/azure/backup/azure-kubernetes-service-cluster-backup-concept)
+
+
+- Firewall:  [Firewall Access Rules to access an Azure Container Registry](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-firewall-access-rules#configure-client-firewall-rules-for-mcr](https://learn.microsoft.com/en-us/azure/backup/azure-kubernetes-service-backup-overview))
 
 
 
-- CLI:   ([Quickstart: Configure vaulted backup for an Azure Kubernetes Service AKS cluster using Azure CLI](https://learn.microsoft.com/en-us/azure/backup/quick-kubernetes-backup-cli))
-
- 
-
-
-
-
-
-Prerequires
-Azure Kubernetes Service (AKS) backup using Azure Backup prerequisites - Azure Backup | Microsoft Learn
-
-
-What is AKS backup
-What is Azure Kubernetes Service (AKS) backup? - Azure Backup | Microsoft Learn
-
-
-Firewall
-Firewall Access Rules to access an Azure Container Registry - Azure Container Registry | Microsoft Learn
-
-
-
-If you encounter problems, please open an issue!
+🟢 If you encounter problems, please open an issue!
