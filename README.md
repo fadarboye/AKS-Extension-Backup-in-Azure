@@ -73,5 +73,25 @@ az storage container create --name $blobcontainer --account-name $storageaccount
 <img width="573" alt="image" src="https://github.com/user-attachments/assets/af4f29eb-bf53-4d7c-94d2-5d01d704ae5b" />
 
 
-⚠️ If you want to create
+<br/>
 
+#### INSTALL BACKUP EXTENSION
+
+```sh
+az k8s-extension create --name azure-aks-backup --extension-type microsoft.dataprotection.kubernetes --scope cluster --cluster-type managedClusters --cluster-name $akscluster --resource-group $aksclusterresourcegroup --release-train stable --configuration-settings blobContainer=$blobcontainer storageAccount=$storageaccount storageAccountResourceGroup=$storageaccountresourcegroup storageAccountSubscriptionId=$subscriptionId
+```
+
+<br/>
+
+⚠️Note : The backup vault and the AKS cluster needs to be in the same region and subscription.
+
+<br/>
+
+
+#### CREATE Storage Blob Data Contributor role 
+
+```sh
+az role assignment create --assignee-object-id $(az k8s-extension show --name azure-aks-backup --cluster-name $akscluster --resource-group $aksclusterresourcegroup --cluster-type managedClusters --query aksAssignedIdentity.principalId --output tsv) --role 'Storage Blob Data Contributor' --scope /subscriptions/$subscriptionId/resourceGroups/$storageaccountresourcegroup/providers/Microsoft.Storage/storageAccounts/$storageaccount
+```
+
+![image](https://github.com/user-attachments/assets/90394ec2-c82c-4f10-acc9-30ab93707df1)
