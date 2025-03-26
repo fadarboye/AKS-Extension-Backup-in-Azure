@@ -6,7 +6,7 @@
 ![Screenshot 2025-03-25 021635](https://github.com/user-attachments/assets/f06aa678-8b8e-46d2-8cff-cdfc1e355da9)
 
 
-# AKS BACK-UP IN AZURE
+# AKS CLUSTER BACK-UP IN AZURE
 
 This is a quick guides focus on a command-line/portal experience to easily and quickly run all the required steps. for backing up your AKS cluster in Azure.
 
