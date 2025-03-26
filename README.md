@@ -95,4 +95,29 @@ az k8s-extension create --name azure-aks-backup --extension-type microsoft.datap
 az role assignment create --assignee-object-id $(az k8s-extension show --name azure-aks-backup --cluster-name $akscluster --resource-group $aksclusterresourcegroup --cluster-type managedClusters --query aksAssignedIdentity.principalId --output tsv) --role 'Storage Blob Data Contributor' --scope /subscriptions/$subscriptionId/resourceGroups/$storageaccountresourcegroup/providers/Microsoft.Storage/storageAccounts/$storageaccount
 ```
 
-![image](https://github.com/user-attachments/assets/90394ec2-c82c-4f10-acc9-30ab93707df1)
+
+# LINKS 
+-Portal
+
+Quickstart: Configure an Azure Kubernetes Services cluster backup - Azure Backup | Microsoft Learn
+
+
+
+CLI
+Quickstart - Configure vaulted backup for an Azure Kubernetes Service (AKS) cluster using Azure Backup via Azure CLI - Azure Backup | Microsoft Learn
+
+
+Prerequires
+Azure Kubernetes Service (AKS) backup using Azure Backup prerequisites - Azure Backup | Microsoft Learn
+
+
+What is AKS backup
+What is Azure Kubernetes Service (AKS) backup? - Azure Backup | Microsoft Learn
+
+
+Firewall
+Firewall Access Rules to access an Azure Container Registry - Azure Container Registry | Microsoft Learn
+
+
+
+If you encounter problems, please open an issue!
