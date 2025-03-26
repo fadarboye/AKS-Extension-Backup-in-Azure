@@ -61,6 +61,7 @@ az dataprotection backup-policy get-default-policy-template --datasource-type Az
 az storage account create --name $storageaccount --resource-group $storageaccountresourcegroup --location $region --sku Standard_LRS
 ```
 
+<br/>
 
 #### CREATE BLOB CONTAINER
 
