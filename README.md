@@ -115,4 +115,4 @@ az role assignment create --assignee-object-id $(az k8s-extension show --name az
 
 
 
-🟢 If you encounter problems, please open an issue!
+🟢 If you encounter problems, please open an issue and use the issue template !
