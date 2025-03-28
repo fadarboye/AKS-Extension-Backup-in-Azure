@@ -22,7 +22,7 @@ This is a quick guides focus on a command-line/portal experience to easily and q
 - The Backup Extension during installation fetches Container Images stored in Microsoft Container Registry (MCR). If you enable a `firewall` on the AKS cluster, the extension installation process might fail due to access issues on the Registry.  Allow MCR access from the firewall.
 
 
-- For cluster using a Private Virtual Network and Firewall, apply the FQDN/application rules
+- For cluster using a Private Virtual Network and Firewall, apply the FQDN/application rules.
 
 
 - If you have any previous installation of `Velero` in the AKS cluster, you need to delete it before installing Backup Extension.
