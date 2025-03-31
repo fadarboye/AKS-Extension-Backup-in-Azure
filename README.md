@@ -57,7 +57,7 @@ az dataprotection backup-policy get-default-policy-template --datasource-type Az
 2. create the policy with the akspolicy.json template you save above, you can `ls` to see the saved `askspolicy.json`
 
 ```sh
-az dataprotection backup-policy create -g testBkpVaultRG --vault-name TestBkpVault -n mypolicy --policy policy.json
+az dataprotection backup-policy create -g testBkpVaultRG --vault-name TestBkpVault -n mypolicy --policy akspolicy.json
 ```
 
 <br/>
