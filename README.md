@@ -46,18 +46,18 @@ az dataprotection backup-vault create --resource-group $backupvaultresourcegroup
 
 #### CREATE BACKUP POLICY
 
-- Once the vault creation is complete, create a backup policy to protect AKS clusters
+1. Once the vault creation is complete, create a backup policy to protect AKS clusters
 
 
 ```sh
 az dataprotection backup-policy get-default-policy-template --datasource-type AzureKubernetesService > akspolicy.json
 ```
+<br/>
 
-
-- create the policy with the akspolicy.json template you save above, you can `ls` to get see the saved `askspolicy.json`
+2. create the policy with the akspolicy.json template you save above, you can `ls` to see the saved `askspolicy.json`
 
 ```sh
-az dataprotection backup-policy get-default-policy-template --datasource-type AzureKubernetesService > akspolicy.json
+az dataprotection backup-policy create -g testBkpVaultRG --vault-name TestBkpVault -n mypolicy --policy policy.json
 ```
 
 <br/>
