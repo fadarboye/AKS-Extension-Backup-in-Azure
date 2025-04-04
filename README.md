@@ -106,6 +106,51 @@ az role assignment create --assignee-object-id $(az k8s-extension show --name az
 
 <br/>
 
+
+
+
+GRANT ON STORAGE ACCOUNTPERMISSION
+```sh
+az role assignment create --assignee-object-id $(az k8s-extension show --name azure-aks-backup --cluster-name <aksclustername> --resource-group <aksclusterrg> --cluster-type managedClusters --query aksAssignedIdentity.principalId --output tsv) --role 'Storage Blob Data Contributor' --scope /subscriptions/<subscriptionid>/resourceGroups/<storageaccountrg>/providers/Microsoft.Storage/storageAccounts/<storageaccountname>
+```
+
+TRUSTED ACCESS RELATED OPERATION
+```sh
+az aks trustedaccess rolebinding create --resource-group <aksclusterrg> --cluster-name <aksclustername> --name <randomRoleBindingName> --source-resource-id $(az dataprotection backup-vault show --resource-group <vaultrg> --vault <VaultName> --query id -o tsv) --roles Microsoft.DataProtection/backupVaults/backup-operator
+```
+<br/>
+
+ASSIGN REQUIRED PERMISSION AND VALIDATE
+
+
+- With the request prepared, first you need to validate if the required roles are assigned to the resources involved by running the following command:
+
+```sh
+az dataprotection backup-instance validate-for-backup --backup-instance ./backupinstance.json --ids /subscriptions/$subscriptionId/resourceGroups/$backupvaultresourcegroup/providers/Microsoft.DataProtection/backupVaults/$backupvault
+```
+<br/>
+
+- If the validation fails and there are certain permissions missing, then you can assign them by running the following command:
+
+
+```sh
+az dataprotection backup-instance update-msi-permissions command.
+az dataprotection backup-instance update-msi-permissions --datasource-type AzureKubernetesService --operation Backup --permissions-scope ResourceGroup --vault-name $backupvault --resource-group $backupvaultresourcegroup --backup-instance backupinstance.json
+```
+
+<br/>
+
+#### CONFIGURE BACKUP 
+- Once the permissions are assigned, revalidate using the earlier validate for backup command and then proceed to configure backup:
+
+```sh
+az dataprotection backup-instance create --backup-instance  backupinstance.json --resource-group $backupvaultresourcegroup --vault-name $backupvault
+```
+
+
+<br/>
+
+
 # LINKS 
 
 - Portal:  [Quickstart: Configure an Azure Kubernetes Services cluster backup - Azure Backup | Microsoft Learn](https://learn.microsoft.com/en-us/azure/backup/quick-backup-aks)
