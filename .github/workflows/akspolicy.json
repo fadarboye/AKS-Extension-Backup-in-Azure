@@ -1,0 +1,111 @@
+{
+  "datasourceTypes": [
+    "Microsoft.ContainerService/managedClusters"
+  ],
+  "name": "AKSPolicy1",
+  "objectType": "BackupPolicy",
+  "policyRules": [
+    {
+      "backupParameters": {
+        "backupType": "Incremental",
+        "objectType": "AzureBackupParams"
+      },
+      "dataStore": {
+        "dataStoreType": "OperationalStore",
+        "objectType": "DataStoreInfoBase"
+      },
+      "name": "BackupHourly",
+      "objectType": "AzureBackupRule",
+      "trigger": {
+        "objectType": "ScheduleBasedTriggerContext",
+        "schedule": {
+          "repeatingTimeIntervals": [
+            "R/2023-01-04T09:00:00+00:00/PT4H"
+          ]
+        },
+        "taggingCriteria": [
+          {
+            "criteria": [
+              {
+                "absoluteCriteria": [
+                  "FirstOfDay"
+                ],
+                "objectType": "ScheduleBasedBackupCriteria"
+              }
+            ],
+            "isDefault": false,
+            "tagInfo": {
+              "id": "Daily_",
+              "tagName": "Daily"
+            },
+            "taggingPriority": 25
+          },
+          {
+            "isDefault": true,
+            "tagInfo": {
+              "id": "Default_",
+              "tagName": "Default"
+            },
+            "taggingPriority": 99
+          }
+        ]
+      }
+    },
+    {
+      "isDefault": true,
+      "lifecycles": [
+        {
+          "deleteAfter": {
+            "duration": "P7D",
+            "objectType": "AbsoluteDeleteOption"
+          },
+          "sourceDataStore": {
+            "dataStoreType": "OperationalStore",
+            "objectType": "DataStoreInfoBase"
+          }
+        }
+      ],
+      "name": "Default",
+      "objectType": "AzureRetentionRule"
+    },
+    {
+      "isDefault": false,
+      "lifecycles": [
+        {
+          "deleteAfter": {
+            "duration": "P7D",
+            "objectType": "AbsoluteDeleteOption"
+          },
+          "sourceDataStore": {
+            "dataStoreType": "OperationalStore",
+            "objectType": "DataStoreInfoBase"
+          },
+          "targetDataStoreCopySettings": [
+            {
+              "copyAfter": {
+                "objectType": "ImmediateCopyOption"
+              },
+              "dataStore": {
+                "dataStoreType": "VaultStore",
+                "objectType": "DataStoreInfoBase"
+              }
+            }
+          ]
+        },
+        {
+          "deleteAfter": {
+            "duration": "P84D",
+            "objectType": "AbsoluteDeleteOption"
+          },
+          "sourceDataStore": {
+            "dataStoreType": "VaultStore",
+            "objectType": "DataStoreInfoBase"
+          },
+          "targetDataStoreCopySettings": []
+        }
+      ],
+      "name": "Daily",
+      "objectType": "AzureRetentionRule"
+    }
+  ]
+}
