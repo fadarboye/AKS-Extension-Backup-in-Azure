@@ -11,6 +11,11 @@
 This is a quick guides focus on a command-line/portal experience to easily and quickly run all the required steps. for backing up your AKS cluster in Azure using Backup extension.
 <br/>
 
+
+
+https://github.com/user-attachments/assets/17d9fb52-3e2b-4d0f-8fd8-58de894e049d
+
+
 ## PREREQUISITES
 
 - Before installing Backup Extension in the AKS cluster, ensure that the `CSI drivers` and `Snapshots` are Enabled for your cluster. If disabled, please enable them.
