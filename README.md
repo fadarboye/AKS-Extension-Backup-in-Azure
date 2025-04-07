@@ -12,10 +12,6 @@ This is a quick guides focus on a command-line/portal experience to easily and q
 <br/>
 
 
-
-https://github.com/user-attachments/assets/17d9fb52-3e2b-4d0f-8fd8-58de894e049d
-
-
 ## PREREQUISITES
 
 - Before installing Backup Extension in the AKS cluster, ensure that the `CSI drivers` and `Snapshots` are Enabled for your cluster. If disabled, please enable them.
@@ -37,6 +33,10 @@ https://github.com/user-attachments/assets/17d9fb52-3e2b-4d0f-8fd8-58de894e049d
 
 
 - Finally, If you are using Azure network security group (NSG) to filter network traffic between Azure resources in an Azure virtual network then set an `inbound rule` to allow service tags `azurebackup` and `azurecloud`.
+
+<br/>
+
+https://github.com/user-attachments/assets/3e3b90be-52c8-4f60-8591-39150fc07a3f
 
 <br/>
 
