@@ -14,16 +14,16 @@ This is a quick guides focus on a command-line/portal experience to easily and q
 
 ## PREREQUISITES
 
-- Before installing Backup Extension in the AKS cluster, ensure that the `CSI drivers` and `Snapshots` are Enabled for your cluster. If disabled, please enable them.
+- Before installing Backup Extension in the AKS cluster, ensure that the `CSI drivers` and `Snapshots` are Enabled for your cluster. If disabled, please [enable](https://learn.microsoft.com/en-us/azure/aks/csi-storage-drivers#enable-csi-storage-drivers-on-an-existing-cluster) them.
 
 
-- Azure Backup for AKS supports clusters using either a `system-assigned managed identity` or a `user-assigned managed identity` for backup operations. It does not service principal.
+- Azure Backup for AKS supports clusters using either a [system-assigned managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity#update-an-existing-aks-cluster-to-use-a-system-assigned-managed-identity) or a [user-assigned managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity#update-an-existing-cluster-to-use-a-user-assigned-managed-identity) for backup operations. It does not use service principal.
 
 
 - The Backup Extension during installation fetches Container Images stored in Microsoft Container Registry (MCR). If you enable a `firewall` on the AKS cluster, the extension installation process might fail due to access issues on the Registry.  Allow MCR access from the firewall.
 
 
-- For cluster using a Private Virtual Network and Firewall, apply the FQDN/application rules.
+- For cluster using a Private Virtual Network and Firewall, apply the FQDN/application [rules](https://learn.microsoft.com/en-us/azure/firewall/dns-settings).
 
 
 - If you have any previous installation of `Velero` in the AKS cluster, you need to delete it before installing Backup Extension.
@@ -125,7 +125,7 @@ az aks trustedaccess rolebinding create --resource-group <aksclusterrg> --cluste
 ```
 <br/>
 
-ASSIGN REQUIRED PERMISSION AND VALIDATE
+## ASSIGN REQUIRED PERMISSION AND VALIDATE
 
 
 - With the request prepared, first you need to validate if the required roles are assigned to the resources involved by running the following command:
@@ -156,7 +156,7 @@ az dataprotection backup-instance create --backup-instance  backupinstance.json 
 <br/>
 
 
-# LINKS 
+# Resources
 
 - Portal:  [Quickstart: Configure an Azure Kubernetes Services cluster backup - Azure Backup | Microsoft Learn](https://learn.microsoft.com/en-us/azure/backup/quick-backup-aks)
 
