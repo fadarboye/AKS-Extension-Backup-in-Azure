@@ -6,11 +6,10 @@
 ![Screenshot 2025-03-25 021635](https://github.com/user-attachments/assets/f06aa678-8b8e-46d2-8cff-cdfc1e355da9)
 
 
-# AKS EXTENSION BACK-UP IN AZURE
+## AKS EXTENSION BACK-UP IN AZURE
 
 This is a quick guides focus on a command-line/portal experience to easily and quickly run all the required steps. for backing up your AKS cluster in Azure using Backup extension.
 <br/>
-
 
 ## PREREQUISITES
 
@@ -43,7 +42,9 @@ https://github.com/user-attachments/assets/3e3b90be-52c8-4f60-8591-39150fc07a3f
 
 <br/>
 
-# Backup Extension
+## Backup Extension
+Below is the prerequisites for Azure Kubernetes Service (AKS) backup.
+
 - The extension enables backup and restore capabilities for the containerized workloads and persistent volumes used by the workloads running in AKS clusters.
 
 - Backup Extension is installed in its own namespace dataprotection-microsoft by default. It is installed with cluster wide scope that allows the extension to access all the cluster resources. During the extension installation, it also creates a User-assigned Managed Identity (Extension Identity) in the Node Pool resource group.
@@ -119,7 +120,8 @@ az k8s-extension create --name azure-aks-backup --extension-type microsoft.datap
 
 <br/>
 
-⚠️Note : The backup vault and the AKS cluster needs to be in the same `region` and `subscription`.
+> [!NOTE]
+The backup vault and the AKS cluster needs to be in the same `region` and `subscription`.
 
 <br/>
 
@@ -192,6 +194,8 @@ az dataprotection backup-instance create --backup-instance  backupinstance.json 
 
 
 - Firewall:  [Firewall Access Rules to access an Azure Container Registry](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-firewall-access-rules#configure-client-firewall-rules-for-mcr](https://learn.microsoft.com/en-us/azure/backup/azure-kubernetes-service-backup-overview))
+
+
 
 
 
