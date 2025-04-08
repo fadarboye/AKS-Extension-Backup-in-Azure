@@ -14,6 +14,8 @@ This is a quick guides focus on a command-line/portal experience to easily and q
 
 ## PREREQUISITES
 
+To enable backup for an AKS cluster, see the following prerequisites: .
+
 - Before installing Backup Extension in the AKS cluster, ensure that the `CSI drivers` and `Snapshots` are Enabled for your cluster. If disabled, please [enable](https://learn.microsoft.com/en-us/azure/aks/csi-storage-drivers#enable-csi-storage-drivers-on-an-existing-cluster) them.
 
 
@@ -29,16 +31,35 @@ This is a quick guides focus on a command-line/portal experience to easily and q
 - If you have any previous installation of `Velero` in the AKS cluster, you need to delete it before installing Backup Extension.
 
 
-- If you are using Azure policies in your AKS cluster, ensure that the extension namespace `dataprotection-microsoft` is excluded from these policies to allow backup and restore operations to run successfully.
+- If you are using [Azure policies in your AKS cluster](https://learn.microsoft.com/en-us/azure/aks/policy-reference), ensure that the extension namespace `dataprotection-microsoft` is excluded from these policies to allow backup and restore operations to run successfully.
 
 
 - Finally, If you are using Azure network security group (NSG) to filter network traffic between Azure resources in an Azure virtual network then set an `inbound rule` to allow service tags `azurebackup` and `azurecloud`.
 
 <br/>
 
+
 https://github.com/user-attachments/assets/3e3b90be-52c8-4f60-8591-39150fc07a3f
 
 <br/>
+
+# Backup Extension
+- The extension enables backup and restore capabilities for the containerized workloads and persistent volumes used by the workloads running in AKS clusters.
+
+- Backup Extension is installed in its own namespace dataprotection-microsoft by default. It is installed with cluster wide scope that allows the extension to access all the cluster resources. During the extension installation, it also creates a User-assigned Managed Identity (Extension Identity) in the Node Pool resource group.
+
+- Backup Extension uses a blob container (provided in input during installation) as a default location for backup storage. To access this blob container, the Extension Identity requires Storage Blob Data Contributor role on the storage account that has the container.
+
+- You need to install Backup Extension on both the source cluster to be backed up and the target cluster where backup is to be restored.
+
+- Backup Extension can be installed in the cluster from the AKS portal blade on the Backup tab under Settings. You can also use the Azure CLI commands to [manage the installation and other operations on the Backup Extension](https://learn.microsoft.com/en-us/azure/backup/azure-kubernetes-service-cluster-manage-backups#backup-extension-related-operations).
+
+- Before you install an extension in an AKS cluster, you must register the Microsoft.KubernetesConfiguration resource provider at the subscription level. Learn how to [register the resource provider](https://learn.microsoft.com/en-us/azure/backup/azure-kubernetes-service-cluster-manage-backups#resource-provider-registrations).
+
+- Extension agent and extension operator are the core platform components in AKS, which are installed when an extension of any type is installed for the first time in an AKS cluster. These provide capabilities to deploy first-party and third-party extensions. The backup extension also relies on them for installation and upgrades.
+
+
+--------------------------
 
 #### CREATE A BACKUP VAULT
 
