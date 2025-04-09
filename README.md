@@ -137,7 +137,7 @@ az role assignment create --assignee-object-id $(az k8s-extension show --name az
 
 
 
-GRANT ON STORAGE ACCOUNTPERMISSION
+GRANT ON STORAGE ACCOUNT PERMISSION
 ```sh
 az role assignment create --assignee-object-id $(az k8s-extension show --name azure-aks-backup --cluster-name <aksclustername> --resource-group <aksclusterrg> --cluster-type managedClusters --query aksAssignedIdentity.principalId --output tsv) --role 'Storage Blob Data Contributor' --scope /subscriptions/<subscriptionid>/resourceGroups/<storageaccountrg>/providers/Microsoft.Storage/storageAccounts/<storageaccountname>
 ```
