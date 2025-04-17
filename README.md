@@ -121,6 +121,10 @@ az k8s-extension create --name azure-aks-backup --extension-type microsoft.datap
 
 <br/>
 
+![image](https://github.com/user-attachments/assets/cc76d131-1941-4eda-a686-5bb0e7d44e84)
+
+<br/>
+
 > [!NOTE]
 The backup vault and the AKS cluster needs to be in the same `region` and `subscription`.
 
