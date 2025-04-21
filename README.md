@@ -106,8 +106,9 @@ az storage container create --name $blobcontainer --account-name $storageaccount
 ```
 
 
+![image](https://github.com/user-attachments/assets/af4cde9d-df94-42d2-926d-4291fc676a23)
 
-<img width="685" alt="image" src="https://github.com/user-attachments/assets/367ffa23-eef6-470a-b5e5-2094fae58788" />
+
 
 
 
