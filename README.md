@@ -133,7 +133,7 @@ The backup vault and the AKS cluster needs to be in the same `region` and `subsc
 
 
 #### CREATE Storage Blob Data Contributor role 
-
+GRANT ON STORAGE ACCOUNT PERMISSION
 ```sh
 az role assignment create --assignee-object-id $(az k8s-extension show --name azure-aks-backup --cluster-name $akscluster --resource-group $aksclusterresourcegroup --cluster-type managedClusters --query aksAssignedIdentity.principalId --output tsv) --role 'Storage Blob Data Contributor' --scope /subscriptions/$subscriptionId/resourceGroups/$storageaccountresourcegroup/providers/Microsoft.Storage/storageAccounts/$storageaccount
 ```
@@ -141,12 +141,6 @@ az role assignment create --assignee-object-id $(az k8s-extension show --name az
 <br/>
 
 
-
-
-GRANT ON STORAGE ACCOUNT PERMISSION
-```sh
-az role assignment create --assignee-object-id $(az k8s-extension show --name azure-aks-backup --cluster-name <aksclustername> --resource-group <aksclusterrg> --cluster-type managedClusters --query aksAssignedIdentity.principalId --output tsv) --role 'Storage Blob Data Contributor' --scope /subscriptions/<subscriptionid>/resourceGroups/<storageaccountrg>/providers/Microsoft.Storage/storageAccounts/<storageaccountname>
-```
 
 TRUSTED ACCESS RELATED OPERATION
 ```sh
